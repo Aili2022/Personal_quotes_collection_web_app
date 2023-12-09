@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+<p>Hello <%= session[:fname] %></p>
+<h3>Standard User Landing Page</h3>
+<p>This is where general messages to the account holder would go</p>
+
+<!-- This will take the logged-in user to the above form to edit the details they are allowed to edit -->
+<%= link_to "Edit your account details", edit_user_path(session[:user_id]) %>

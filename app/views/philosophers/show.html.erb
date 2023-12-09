@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @philosopher %>
+
+<!--show accordingly buttons for the users -->
+<div>
+  <% if logged_in? && current_user.is_admin? %>
+    <%= link_to "Edit this philosopher", edit_philosopher_path(@philosopher) %> |
+    <%= link_to "Back to philosophers", philosophers_path %>
+
+    <%= button_to "Destroy this philosopher", @philosopher, method: :delete %>
+  <% else %>
+    <%= link_to "Back to main page", root_path %>
+  <% end %>
+</div>

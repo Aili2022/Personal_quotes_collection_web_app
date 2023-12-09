@@ -1,0 +1,34 @@
+<!-- Heading for the category search section -->
+<h3 style="padding-top: 10px;">Search for Quotes by category</h3>
+<div class="existing-categories" style="padding-top: 15px;">
+  <h5>Categories:</h5>
+  <p>Philosophy, Science, Politics, History, Art, Religion, Technology, Ethics, Education, Travel</p>
+</div>
+
+<!-- Render the search Form for searching quotes by category -->
+<%= form_tag search_path, method: :get do %>
+<div class="form-group" style="padding-bottom: 10px;">
+<%= text_field_tag :category_query, params[:category_query], placeholder: 'Enter 
+an category', class: "form-control" %>
+</div>
+<%= submit_tag 'Search Quote', class: "btn btn-primary" %>
+<% end %>
+
+<!-- Check if search results are present, if no quotes display an error message -->
+<% if params[:category_query].present? %>
+  <% if @quotematch.present?%>
+    <h4 style="padding-top: 15px;">Results:</h4>
+    <% @quotematch.each do |quote| %>
+      <div class="quote">
+        <h5 class="text-primary">
+          <%= quote.text %>
+        </h5>
+        <p class="card-text">
+          [<a href="/quotes/<%= quote.id %>">View quote's detail</a>]
+        </p>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No matching quotes found, try other categories...</p>
+  <% end %>
+<% end %>

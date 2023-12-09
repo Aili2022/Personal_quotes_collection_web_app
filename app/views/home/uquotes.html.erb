@@ -1,0 +1,20 @@
+<h3>Your Quotes</h3>
+
+<!-- Check if there are quotes to display -->
+<% if @quotes.present? %>
+  <% @quotes.each do |quote| %>
+    <div class="card bg-body-tertiary" style="margin-bottom:10px">
+      <div class="card-body">
+        <p class="card-text"><%= quote.text %></p>
+        <p class="card-text">Philosopher: <%= quote.philosopher.fname %></p>
+        <p class="card-text">
+          [<a href="/quotes/<%= quote.id %>">View quote's detail</a>]
+        </p>
+      </div>
+    </div>
+  <% end %> 
+
+<!-- Display a message if the user has no quotes -->  
+<% else %>
+  <p>You don't have any quotes yet.</p> 
+<% end %>
